@@ -1,0 +1,26 @@
+{
+	"name": "ScheduleTrigger",
+	"properties": {
+		"annotations": [
+			"Hourly"
+		],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Orchestration_Lego",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 1,
+				"startTime": "2020-03-01T08:26:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
