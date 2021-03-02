@@ -1,7 +1,7 @@
 {
-	"name": "Lego_HTTP_to_ADLS_Themes",
+	"name": "Lego_HTTP_to_ADLS",
 	"properties": {
-		"description": "Copy themes.csv.gz from Rebrickable to Azure Data Lake Storage",
+		"description": "Copy file from rebrickable to Azure Data Lake Storage",
 		"activities": [
 			{
 				"name": "Copy Themes from HTTP to ADLS",
@@ -17,11 +17,11 @@
 				"userProperties": [
 					{
 						"name": "Source",
-						"value": "themes.csv.gz"
+						"value": "@{pipeline().parameters.FileName}"
 					},
 					{
 						"name": "Destination",
-						"value": "lego//themes.csv"
+						"value": "lego//@{pipeline().parameters.FileName}"
 					}
 				],
 				"typeProperties": {
@@ -78,8 +78,14 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "ADLS_Lego_Themes",
-						"type": "DatasetReference"
+						"referenceName": "ADLS_Lego",
+						"type": "DatasetReference",
+						"parameters": {
+							"FileName": {
+								"value": "@pipeline().parameters.FileName",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
